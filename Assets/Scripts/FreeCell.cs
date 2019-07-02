@@ -7,15 +7,15 @@ public class FreeCell : MonoBehaviour {
 
         public Sprite[] cardFaces;
         public GameObject cardPrefab;
-        public GameObject[] tableau;
-        public GameObject[] sortPos;
+        public GameObject[] tableauPos;
+        public GameObject[] homeCellPos;
         public GameObject[] freeCellPos;
 
         public static string[] suits = new string[] { "C", "D", "H", "S"};
         public static string[] values = new string[] { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
-        public List<string>[] tableauPositions;
-        public List<string>[] sorts;
-        public List<string>[] freeCells;
+        public List<string>[] tableaus;
+        public List<string>[] homecells;
+        public List<string>[] freecells;
 
         private List<string> pos0 = new List<string>();
         private List<string> pos1 = new List<string>();
@@ -31,7 +31,7 @@ public class FreeCell : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-                tableauPositions = new List<string>[] {pos0, pos1, pos2, pos3, pos4, pos5, pos6, pos7 };
+                tableaus = new List<string>[] {pos0, pos1, pos2, pos3, pos4, pos5, pos6, pos7 };
 		PlayCards();
 	}
 	
@@ -48,9 +48,8 @@ public class FreeCell : MonoBehaviour {
             foreach(string card in deck){
                 print(card);
             }
-
             FreeCellSort();
-            FreeCellDeal();
+            StartCoroutine(FreeCellDeal());
 
         }
 
@@ -78,34 +77,34 @@ public class FreeCell : MonoBehaviour {
             }
         }
 
-        void FreeCellDeal(){
+        IEnumerator FreeCellDeal(){
             for (int i = 0; i < 8; i++){
                 float yOffset = 0;
                 float zOffset = 0.03f;
-                foreach (string card in tableauPositions[i]){
+                foreach (string card in tableaus[i]){
+                    yield return new WaitForSeconds(0.03f);
                     GameObject newCard = Instantiate(cardPrefab,
                             new Vector3(
-                                tableau[i].transform.position.x,
-                                tableau[i].transform.position.y - yOffset,
-                                tableau[i].transform.position.z - zOffset
+                                tableauPos[i].transform.position.x,
+                                tableauPos[i].transform.position.y - yOffset,
+                                tableauPos[i].transform.position.z - zOffset
                                 ),
-                            Quaternion.identity,tableau[i].transform);
+                            Quaternion.identity,tableauPos[i].transform);
                     newCard.name = card;
 
-                    yOffset = yOffset + 0.3f;
+                    yOffset = yOffset + 0.6f;
                     zOffset = zOffset + 0.3f;
                 }
             }
         }
 
         void FreeCellSort(){
-            for(int i = 0; i < 8; i++){
-                for(int j = 0; j < 8; i++){
-                    tableauPositions[j].Add(deck.Last<string>());
-                    deck.RemoveAt(deck.Count - 1);
-                }
+            for (int i = 0; i < 52; i++){
+                tableaus[i % 8].Add(deck.Last<string>());
+                deck.RemoveAt(deck.Count - 1);
             }
         }
+
 }
 
 

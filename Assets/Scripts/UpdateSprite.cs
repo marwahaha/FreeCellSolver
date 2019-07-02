@@ -6,7 +6,7 @@ public class UpdateSprite : MonoBehaviour
 {
     public Sprite cardFace;
     public SpriteRenderer spriteRenderer;
-    private Selectable selectabel;
+    private Selectable selectable;
     private FreeCell freeCell;
 
     // Start is called before the first frame update
@@ -24,6 +24,7 @@ public class UpdateSprite : MonoBehaviour
             i++;
         }
         spriteRenderer = GetComponent<SpriteRenderer>();
+        selectable = GetComponent<Selectable>();
         
     }
 
