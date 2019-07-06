@@ -108,7 +108,7 @@ action(put(card(S,R))) :- card(S,R), location(L).
 action(put(card(S,R),card(LS,LR))) :- card(S,R), location(card(LS,LR)), S != LS.
 action(put(card(S,R),card(LS,LR))) :- card(S,R), location(card(LS,LR)), R != LR.
 
-action(score(card(S,R), H)) :- card(S,R), homecell(H).
+action(put(card(S,R), H)) :- card(S,R), homecell(H).
 
 %% FreeCell World Theory Definition
 %%      - Effect of action put(S,R,L) and put(card(S,R),card(LS,LR)) (dynamic causal law)
@@ -149,6 +149,6 @@ holds(F, T+1) :- holds(F,T), not -holds(F, T+1), T < n.
 %%          "impossible to move card onto card in freecell"
 :- occurs(put(card(S,R),card(FS,FR)), T), freecell(F), card(S,R), card(FS,FR),
     holds(on(card(FS,FR),F),T).
-
+%%          "impossible to 
 
 occurs(put(card(d,7),card(s,8)),0).

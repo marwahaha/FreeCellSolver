@@ -40,8 +40,10 @@ namespace FreeCellDeals
 		public Deck(int seed) {
 			var r = new Rand(seed);
 			Cards = new List<Card>();
-			for (int i=0; i < 52; i++)
-				Cards.Add(new Card(51 - i));
+			for (int i=0; i < 52; i++){
+                            Cards.Add(new Card(51 - i));
+                            Console.WriteLine("Card: {0}\n", Cards[i]);
+                        }
                         // Deck is backwards so we turn it so that we can deal from the top
 			for (int i=0; i < 51; i++) {
 				int j = 51 - r.Next() % (52 - i);

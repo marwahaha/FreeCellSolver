@@ -57,6 +57,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\FreeCell.cs" />
      <Compile Include="Assets\Scripts\Selectable.cs" />
+     <Compile Include="Assets\Scripts\Solver.cs" />
      <Compile Include="Assets\Scripts\UpdateSprite.cs" />
      <Compile Include="Assets\Scripts\UserInput.cs" />
  <Reference Include="Unity.Timeline.Editor">
