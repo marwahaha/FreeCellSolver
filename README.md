@@ -1,6 +1,6 @@
 # FreeCellSolver
 
-The following is a FreeCell Solver using ASP, C#, and Unity. The Solver was created for a project requirment during a course in logic programming. The project shows the abilty for Answer Set Programing(ASP) to solve complex problems with relativly few lines of code. The solver uses Microsofts original dealing algoritm created by Jim Horne. The code implementing this algoritm was borrowed from rosettacode.org(see Acknowledgements). This deals 32000 unique deals of which #11982 is unsolvable. 
+The following is a FreeCell Solver using ASP, C#, and Unity. The Solver was created for a project requirment during a course in logic programming. The project shows the ability for Answer Set Programing(ASP) to solve complex problems with relativly few lines of code. The solver uses Microsofts original dealing algoritm created by Jim Horne. The code implementing this algoritm was borrowed from rosettacode.org(see Acknowledgements). This deals 32000 unique deals of which #11982 is unsolvable. 
 
 
 ## Getting Started
